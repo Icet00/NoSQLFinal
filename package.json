@@ -1,0 +1,23 @@
+{
+  "name": "templatenosql",
+  "version": "1.0.0",
+  "description": "\"# NoSQLFinal\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Icet00/NoSQLFinal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Icet00/NoSQLFinal/issues"
+  },
+  "homepage": "https://github.com/Icet00/NoSQLFinal#readme",
+  "dependencies": {
+    "mongodb": "^3.0.4"
+  }
+}
