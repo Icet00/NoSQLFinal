@@ -1,3 +1,9 @@
+//To refresh the scroll down at page relaod
+$(document).ready(function(){
+    $(this).scrollTop(0);
+});
+
+
 $.ajax({
   url: '/db/maxValue',
   type: 'GET',
@@ -41,8 +47,6 @@ $.ajax({
   type: 'GET',
   complete: function(data) {
   	var feature = document.getElementsByClassName("feature-center animate-box");
-  	console.log(data.responseJSON);
-  	console.log(feature);
   	for(var i = 0; i < feature.length;i++)
   	{
   		var h3 = feature[i].querySelectorAll("h3")[0];
@@ -50,7 +54,65 @@ $.ajax({
   		var h4 = feature[i].querySelectorAll("h4")[0];
   		h4.innerHTML = "Average project value : " + Math.floor(data.responseJSON[i].averageValue);
   		var p = feature[i].querySelectorAll("p")[0];
-  		p.innerHTML = "Number of project : " + data.responseJSON[i].count;
+  		p.innerHTML = "Number of projects : " + data.responseJSON[i].count;
   	}
   }
 });
+
+$.ajax({
+  url: '/db/municipality',
+  type: 'GET',
+  complete: function(data) {
+  	var feature = document.getElementsByClassName("feature-left animate-box");
+  	data.responseJSON.sort(function(a, b)
+  	{
+  		if (a.count < b.count)
+	    	return 1;
+		if (a.count > b.count)
+		    return -1;
+		return 0;
+  	});
+  	for(var i = 0; i < feature.length;i++)
+  	{
+  		var h3 = feature[i].querySelectorAll("h3")[0];
+  		h3.innerHTML = data.responseJSON[i]._id;
+  		var p = feature[i].querySelectorAll("p")[0];
+  		p.innerHTML = "Number of project : " + data.responseJSON[i].count;
+  		if(data.responseJSON[i].count < 1000)
+  		{
+  			var icon = feature[i].querySelectorAll("span")[0].querySelectorAll("i")[0] ;
+  			icon.classList.remove('icon-check');
+  			icon.classList.add('icon-cross');
+  		}
+  	}
+  }
+});
+
+function submit()
+{
+	var municipality = document.getElementById('municipality').value;
+	var description = document.getElementById('description').value;
+	var appl_type = document.getElementById('appl_type').value;
+	var value = document.getElementById('value').value;
+	if(!Number.isInteger(value))
+	{
+		value = 0;
+	}
+	console.log(municipality + " - " + description + " - " + appl_type + " - " + value);
+	var json = { municipality: municipality, description: description, appl_type: appl_type, value:value };
+	$.post( '/db/search', json)
+	.done(function(data) {
+	    console.log(data);
+	    var feature = document.getElementsByClassName("card");
+	    console.log(feature);
+	    for(var i = 0; i < feature.length;i++)
+	  	{
+	  		var h3 = feature[i].querySelectorAll("h3")[0];
+	  		h3.innerHTML = data[i].permits.CONTRACTOR;
+	  		var h4 = feature[i].querySelectorAll("h3")[1];
+	  		h4.innerHTML = data[i].permits.ISSUED_DATE;
+	  		var p = feature[i].querySelectorAll("p")[0];
+	  		p.innerHTML = data[i].properties.location;
+	  	}
+	});
+}
