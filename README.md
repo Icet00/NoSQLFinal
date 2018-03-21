@@ -10,15 +10,15 @@ You need to already have at least npm installed. If you have git, you can clone 
 ```
 git clone https://github.com/Icet00/NoSQLFinal.git
 ```
-
-Follow that by launching in the command line.
-```
-npm install
-```
 go into the project repositories
 ```
 cd NoSQLFinal
 ```
+Follow that by launching in the command line.
+```
+npm install
+```
+
 If you don’t have git, you must get the folder from the joined file application.zip. And do the following line.
 ```
 npm start
