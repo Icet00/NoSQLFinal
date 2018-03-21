@@ -15,6 +15,10 @@ Follow that by launching in the command line.
 ```
 npm install
 ```
+go into the project repositories
+```
+cd NoSQLFinal
+```
 If you don’t have git, you must get the folder from the joined file application.zip. And do the following line.
 ```
 npm start
