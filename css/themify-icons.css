@@ -23,6 +23,18 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ti-1:before {
+	content: "1";
+}
+.ti-2:before {
+	content: "2";
+}
+.ti-3:before {
+	content: "3";
+}
+.ti-4:before {
+	content: "4";
+}
 .ti-wand:before {
 	content: "\e600";
 }

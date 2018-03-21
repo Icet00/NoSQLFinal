@@ -609,7 +609,6 @@ form label {
 #gtco-subscribe,
 #gtco-footer,
 .gtco-section {
-  padding: 7em 0;
   clear: both;
   position: relative;
 }
@@ -621,7 +620,6 @@ form label {
   #gtco-subscribe,
   #gtco-footer,
   .gtco-section {
-    padding: 3em 0;
   }
 }
 #gtco-features.border-bottom,
